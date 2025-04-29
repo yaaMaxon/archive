@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+/* @font-face {
+  font-family: "GeneralSans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/GeneralSans-Regular.woff2) format("woff2")
+    url("../fonts/GeneralSans-Regular.woff") format("woff");
+} */
+
+body {
+  font-family: "GeneralSans" !important;
+}
