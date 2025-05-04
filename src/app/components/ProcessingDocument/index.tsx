@@ -5,7 +5,7 @@ import Image from "next/image";
 import { mySocialNetworks } from "@/app/constants/ContactsSettings";
 import { whatWeOffer } from "@/app/constants/ProcessingDocumentSettings";
 import { whatYouGet } from "@/app/constants/ProcessingDocumentSettings";
-import avatar from "@assets/img/avatar.jpg";
+import avatar from "@assets/img/avatar.webp";
 
 const ProcessingDocument = () => {
   return (
@@ -52,7 +52,7 @@ const ProcessingDocument = () => {
             </div>
           </div>
           <p className="text-sm text-[#0C1E21]">
-            ФОП Гупало Петро Євгенович надає повний комплекс архівних послуг у
+            ФОП Гупало Петро Євгенович надає широкий комплекс архівних послуг у
             Львівській області.
           </p>
         </div>
