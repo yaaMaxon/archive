@@ -8,14 +8,14 @@ import Button from "../Button";
 
 export interface ISupportForm {
   name: string;
-  email: string;
+  phone: string;
   message: string;
 }
 
 const ContactUsForm = () => {
   const defaultValues: ISupportForm = {
     name: "",
-    email: "",
+    phone: "",
     message: "",
   };
 
@@ -28,6 +28,17 @@ const ContactUsForm = () => {
 
   const onSubmit: SubmitHandler<ISupportForm> = (data) => {
     console.log(data);
+
+    fetch("http://bot-for-archive.onrender.com/requests", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then(console.log);
+
     reset();
   };
 
@@ -82,27 +93,28 @@ const ContactUsForm = () => {
                 htmlFor="email"
                 className="text-sm text-[#0C1E21] uppercase"
               >
-                Email
+                Телефон
               </label>
               <input
                 id="email"
                 className="text-[rgba(6,39,44,0.60)] placeholder-[rgba(6,39,44,0.60)] rounded-lg border border-[#E8EDED] bg-[#F4F8F8] px-4 py-4 w-full lg:py-2.5"
-                {...register("email", {
-                  required: "Email є обов'язковим!",
+                {...register("phone", {
+                  required: "Номер телефону є обов'язковим!",
                   minLength: {
                     value: 10,
-                    message: "Email має містити принаймі 10 символів.",
+                    message: "Номер телефон має містити принаймі 10 символів.",
                   },
                   pattern: {
-                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                    message: "Не правильний формат пошти.",
+                    value:
+                      /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/,
+                    message: "Не правильний формат номера телефону.",
                   },
                 })}
-                placeholder="Email"
+                placeholder="Номер телефону"
               />
-              {errors.email && (
+              {errors.phone && (
                 <span className="text-red-600 font-medium">
-                  {errors.email.message}
+                  {errors.phone.message}
                 </span>
               )}
             </div>
@@ -129,7 +141,9 @@ const ContactUsForm = () => {
               </span>
             )}
           </div>
-          <Button className="text-white">Надіслати</Button>
+          <Button className="text-white" type="submit">
+            Надіслати
+          </Button>
         </div>
       </form>
     </div>
