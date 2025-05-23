@@ -29,7 +29,7 @@ const ContactUsForm = () => {
   const onSubmit: SubmitHandler<ISupportForm> = (data) => {
     console.log(data);
 
-    fetch("http://bot-for-archive.onrender.com/requests", {
+    fetch("https://bot-for-archive.onrender.com/requests", {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
