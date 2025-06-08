@@ -6,18 +6,10 @@ import Banner from "./components/Banner";
 const Home = () => {
   return (
     <main>
-      <div>
-        <Hero />
-      </div>
-      <div>
-        <AboutUs />
-      </div>
-      <div>
-        <ArchivServices />
-      </div>
-      <div>
-        <Banner />
-      </div>
+      <Hero />
+      <AboutUs />
+      <ArchivServices />
+      <Banner />
     </main>
   );
 };

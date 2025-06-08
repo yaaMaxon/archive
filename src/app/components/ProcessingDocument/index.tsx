@@ -5,16 +5,16 @@ import Image from "next/image";
 import { mySocialNetworks } from "@/app/constants/ContactsSettings";
 import { whatWeOffer } from "@/app/constants/ProcessingDocumentSettings";
 import { whatYouGet } from "@/app/constants/ProcessingDocumentSettings";
-import avatar from "@assets/img/avatar.webp";
+import avatar from "@assets/img/avatar1.webp";
 
 const ProcessingDocument = () => {
   return (
     <div
       id="processingDocument"
-      className="flex flex-col gap-8 lg:gap-4 lg:flex-row lg:justify-between py-14 px-6 lg:px-16 lg:py-24 lg:relative"
+      className="flex flex-col gap-8 lg:gap-32 lg:flex-row lg:justify-center py-14 px-6 lg:px-16 lg:py-24 lg:relative"
     >
       <div className="flex self-start flex-col gap-5 lg:gap-8 lg:sticky lg:top-24">
-        <div className="pb-2 border-b border-b-[#E8EDED] lg:max-w-[250px] max-h-8">
+        <div className="pb-2 border-b border-b-[#E8EDED] lg:max-w-[314px] max-h-8">
           <span className="text-[#0C1E21] uppercase">Контакти</span>
         </div>
         <ul className="flex flex-col gap-4">
@@ -39,11 +39,14 @@ const ProcessingDocument = () => {
             <span className="text-[#0C1E21] uppercase">Архівіст</span>
           </div>
           <div className="flex items-center gap-4">
-            <Image
-              src={avatar}
-              alt="керівник"
-              className="rounded-[50%] w-[50px] h-[50px]"
-            />
+            <div className="relative">
+              <Image
+                src={avatar}
+                alt="керівник"
+                className="rounded-3xl w-[50px] h-[50px] object-cover"
+              />
+              <div className="absolute inset-0 bg-[#0D1E21] opacity-20 rounded-3xl"></div>
+            </div>
             <div>
               <h4 className="text-[#0C1E21] text-lg">Гупало Петро</h4>
               <span className="text-sm text-[rgba(6,39,44,0.60)]">

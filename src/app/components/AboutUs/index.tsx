@@ -4,11 +4,11 @@ import { servicesList } from "@/app/constants/ServicesSettings";
 
 const AboutUs = () => {
   return (
-    <div className="flex flex-col gap-8 lg:flex-row lg:justify-between px-6 lg:px-16 pt-[56px] lg:pt-[96px] lg:relative">
-      <div className="pb-2 border-b border-b-[#E8EDED] min-w-[250px] max-h-8 lg:sticky lg:top-24">
+    <div className="flex flex-col gap-8 lg:gap-32 lg:flex-row lg:justify-center px-6 lg:px-16 pt-[56px] lg:pt-[96px] lg:relative">
+      <div className="pb-2 border-b border-b-[#E8EDED] min-w-[314px] max-h-8 lg:sticky lg:top-24">
         <span className="text-[#0C1E21] uppercase">Про нас</span>
       </div>
-      <div className="flex flex-col gap-4 lg:gap-8 lg:max-w-[850px]">
+      <div className="flex flex-col gap-4 lg:gap-8 lg:max-w-[1209px]">
         <h2 className="text-[32px] lg:text-[48px] text-[#0C1E21] leading-[100%]">
           Інформація про компанію
         </h2>
@@ -37,15 +37,21 @@ const AboutUs = () => {
             Виконання замовлень:
           </span>
           {
-            <ul className="list-disc pl-5 mt-8">
-              {servicesList.map(({ service }, index) => (
-                <li
-                  key={index}
-                  className="lg:text-lg text-[rgba(6,39,44,0.60)]"
-                >
-                  {service}
-                </li>
-              ))}
+            <ul className="list-disc pl-5 mt-8 marker:text-black">
+              {servicesList.map(({ service }, index) => {
+                const [title, ...rest] = service.split(":");
+                const description = rest.join(":").trim();
+
+                return (
+                  <li
+                    key={index}
+                    className="lg:text-lg text-[rgba(6,39,44,0.60)]"
+                  >
+                    <span className="text-[#0C1E21] font-medium">{title}:</span>{" "}
+                    {description}
+                  </li>
+                );
+              })}
             </ul>
           }
         </div>

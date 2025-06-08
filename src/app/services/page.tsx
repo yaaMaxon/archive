@@ -9,27 +9,13 @@ import Banner from "../components/Banner";
 const Services = () => {
   return (
     <main>
-      <div>
-        <HeroServices />
-      </div>
-      <div>
-        <ProcessingDocument />
-      </div>
-      <div>
-        <ExpertDocuments />
-      </div>
-      <div>
-        <OptimizationDocuments />
-      </div>
-      <div>
-        <BookbindingWork />
-      </div>
-      <div>
-        <ReductionDocuments />
-      </div>
-      <div>
-        <Banner />
-      </div>
+      <HeroServices />
+      <ProcessingDocument />
+      <ExpertDocuments />
+      <OptimizationDocuments />
+      <BookbindingWork />
+      <ReductionDocuments />
+      <Banner />
     </main>
   );
 };

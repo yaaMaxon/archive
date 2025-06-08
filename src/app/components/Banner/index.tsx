@@ -12,12 +12,16 @@ const Banner = () => {
   };
 
   const handleRouteServices = () => {
-    router.push("/#services");
+    router.push("/services");
   };
   return (
     <div className="relative">
       <div className="relative w-full bg-cover">
-        <Image className="h-[550px] object-cover" src={banner} alt="cover" />
+        <Image
+          className="h-[550px] lg:h-[750px] object-cover"
+          src={banner}
+          alt="cover"
+        />
         <div className="absolute inset-0 bg-[#0D1E21] opacity-60"></div>
       </div>
       <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-4 text-center">

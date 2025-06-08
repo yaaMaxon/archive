@@ -4,9 +4,9 @@ const OptimizationDocuments = () => {
   return (
     <div
       id="optimizationDocuments"
-      className="flex flex-col gap-8 lg:gap-4 lg:flex-row lg:justify-between pb-14 px-6 lg:px-16 lg:pb-24 scroll-mt-[58px] lg:scroll-mt-[98px] lg:relative"
+      className="flex flex-col gap-8 lg:gap-32 lg:flex-row lg:justify-center pb-14 px-6 lg:px-16 lg:pb-24 scroll-mt-[58px] lg:scroll-mt-[98px] lg:relative"
     >
-      <div className="pb-2 border-b border-b-[#E8EDED] lg:min-w-[250px] max-h-8 lg:sticky lg:top-24">
+      <div className="pb-2 border-b border-b-[#E8EDED] lg:min-w-[314px] max-h-8 lg:sticky lg:top-24">
         <span className="text-[#0C1E21] uppercase">Основа архіву</span>
       </div>
       <div className="flex flex-col gap-4 lg:gap-8 lg:max-w-[850px]">

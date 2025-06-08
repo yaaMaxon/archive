@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Footer from "@components/Footer";
+import { TableProvider } from "./context";
 
 const inter = Inter({
   weight: ["400"],
@@ -38,9 +39,11 @@ export default function RootLayout({
   return (
     <html lang="uk">
       <body className={inter.className}>
-        <NavBar />
-        {children}
-        <Footer />
+        <TableProvider>
+          <NavBar />
+          {children}
+          <Footer />
+        </TableProvider>
       </body>
     </html>
   );

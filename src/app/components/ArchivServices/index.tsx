@@ -5,8 +5,8 @@ import { archivServicesList } from "@/app/constants/ArchivServicesSettings";
 
 const ArchivServices = () => {
   return (
-    <div className="flex flex-col gap-6 px-6 lg:px-16 mt-[56px] lg:mt-[96px] pb-14 lg:pb-24 lg:gap-24 lg:flex-row lg:relative">
-      <div className="pb-2 border-b border-b-[#E8EDED] lg:min-w-[250px] max-h-8 lg:sticky lg:top-24">
+    <div className="flex flex-col gap-6 px-6 lg:px-16 mt-[56px] lg:mt-[96px] pb-14 lg:pb-24 lg:gap-32 lg:flex-row lg:justify-center lg:relative">
+      <div className="pb-2 border-b border-b-[#E8EDED] lg:min-w-[314px] max-h-8 lg:sticky lg:top-24">
         <span className="text-[#0C1E21] uppercase">Послуги</span>
       </div>
       <div>
@@ -18,11 +18,12 @@ const ArchivServices = () => {
                   <Image
                     src={image}
                     alt="archiv-picture"
-                    className="w-[270px] lg:w-[580px] h-[240px]"
+                    className="w-[100%] h-[50%] lg:h-[240px] lg:w-[580px] xl:h-[280px] rounded-lg"
                   />
-                  <span className="text-white texl-xl py-2 px-3 rounded-lg border border-white/10 bg-white/5 backdrop-blur-md absolute top-4 left-4 lg:top-6 lg:left-6">
+                  <span className="text-white texl-xl py-2 px-3 z-1 rounded-lg border border-white/10 bg-white/5 backdrop-blur-md absolute top-4 left-4 lg:top-6 lg:left-6">
                     0{index + 1}
                   </span>
+                  <div className="absolute inset-0 bg-[#0D1E21] opacity-40 rounded-lg"></div>
                 </div>
                 <div className="pb-2 border-b border-b-[#E8EDED] lg:min-w-[250px] max-h-8">
                   <span className="text-sm lg:text-base text-[#050d0e] uppercase">
