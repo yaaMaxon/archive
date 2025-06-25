@@ -80,7 +80,8 @@ const MobileMenu = ({
           </ul>
           <div className="pt-2 pb-8 px-6 lg:px-16 xl:px-[120px] bg-[#0D1E21] border-t border-t-white/10">
             <span className="text-[#9A9FA0] text-sm">
-              © 2024 Архів. Петро Гупало.
+              © 2023-2025 — arhiv.lviv.ua. Архівні послуги. — Всі права
+              захищені.
             </span>
           </div>
         </motion.div>
