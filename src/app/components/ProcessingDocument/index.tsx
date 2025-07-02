@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { mySocialNetworks } from "@/app/constants/ContactsSettings";
 import { whatWeOffer } from "@/app/constants/ProcessingDocumentSettings";
 import { whatYouGet } from "@/app/constants/ProcessingDocumentSettings";
@@ -25,9 +26,9 @@ const ProcessingDocument = () => {
               </div>
               <a
                 href={href}
-                className={`hover:underline underline-offset-6 text-[#0C1E21] ${
+                className={`relative text-[#0C1E21] overflow-hidden ${
                   index === 0 && "pb-1"
-                }`}
+                } after:absolute after:left-0 after:bottom-0 after:h-[1px] after:w-0 after:bg-[#0C1E21] after:transition-all after:duration-300 hover:after:w-full`}
               >
                 {text}
               </a>
@@ -62,9 +63,15 @@ const ProcessingDocument = () => {
       </div>
       <div className="flex flex-col gap-12 lg:max-w-[850px]">
         <div className="flex flex-col gap-4">
-          <h2 className="text-[#172629] text-3xl lg:text-5xl leading-[100%]">
+          <motion.h2
+            initial={{ y: 50, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.5 }}
+            className="text-[#172629] text-3xl lg:text-5xl leading-[100%]"
+          >
             Архівна обробка документів
-          </h2>
+          </motion.h2>
           <p className="text-[#0C1E21]">
             Робота архіва – упорядкувати документи, обробити належним чином,
             відповідно до законодавства, документи Вашого підприємства або

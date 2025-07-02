@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { servicesList } from "@/app/constants/ServicesSettings";
 
 const AboutUs = () => {
@@ -9,9 +10,15 @@ const AboutUs = () => {
         <span className="text-[#0C1E21] uppercase">Про нас</span>
       </div>
       <div className="flex flex-col gap-4 lg:gap-8 lg:max-w-[1209px]">
-        <h2 className="text-[32px] lg:text-[48px] text-[#0C1E21] leading-[100%]">
+        <motion.h2
+          initial={{ y: 50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.5 }}
+          className="text-[32px] lg:text-[48px] text-[#0C1E21] leading-[100%]"
+        >
           Інформація про компанію
-        </h2>
+        </motion.h2>
         <p className="text-lg lg:text-xl text-[#0C1E21]">
           В будь-якій компанії в процесі діяльності назбирується різноманітна
           документація. Тому із часом «гори» паперу потрібно систематизувати та

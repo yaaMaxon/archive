@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { bookbindingWork } from "@/app/constants/BookbindingWorkSettings";
 
 const BookbindingWork = () => {
@@ -13,9 +14,15 @@ const BookbindingWork = () => {
       </div>
       <div className="flex flex-col gap-12 lg:max-w-[850px]">
         <div className="flex flex-col gap-4">
-          <h2 className="text-[#172629] text-3xl lg:text-5xl leading-[100%]">
+          <motion.h2
+            initial={{ y: 50, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.5 }}
+            className="text-[#172629] text-3xl lg:text-5xl leading-[100%]"
+          >
             Описи документів та акти на знищення
-          </h2>
+          </motion.h2>
           <p className="text-[#0C1E21]">
             За результатами експертизи цінності документів працівники ФОП
             складають опис документів у Львові постійного і тривалого термінів

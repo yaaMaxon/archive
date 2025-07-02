@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import Button from "../Button";
 import Image from "next/image";
@@ -24,7 +25,13 @@ const BannerTeam = () => {
         />
         <div className="absolute inset-0 bg-[#0D1E21] opacity-60"></div>
       </div>
-      <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-4 text-center">
+      <motion.div
+        initial={{ y: 50, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true, amount: 0.5 }}
+        className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-4 text-center"
+      >
         <div>
           <span
             className="rounded-md border
@@ -57,7 +64,7 @@ const BannerTeam = () => {
             Послуги
           </Button>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

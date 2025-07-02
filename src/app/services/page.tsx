@@ -4,6 +4,7 @@ import ExpertDocuments from "@components/ExpertDocuments";
 import OptimizationDocuments from "@components/OptimizationDocuments";
 import BookbindingWork from "@components/BookbindingWork";
 import ReductionDocuments from "@components/ReductionDocuments";
+import AboutServices from "@components/AboutServices";
 import Banner from "../components/Banner";
 
 const Services = () => {
@@ -15,6 +16,7 @@ const Services = () => {
       <OptimizationDocuments />
       <BookbindingWork />
       <ReductionDocuments />
+      <AboutServices />
       <Banner />
     </main>
   );

@@ -87,11 +87,51 @@ const NavBar = () => {
             <ul className="flex items-center lg:gap-8 xl:gap-10">
               {navigatPages.map(({ page, path }) => (
                 <li key={page}>
-                  <Link
+                  {/* <Link
                     href={path}
                     className={`${
                       pathname === path && "underline text-[#0C1E21]"
                     } lg:text-4 text-[#103E3A] xl:text-xl hover:underline transition-all duration-300`}
+                  >
+                    {page}
+                  </Link> */}
+                  <Link
+                    href={path}
+                    className={`
+        relative 
+        inline-block 
+        lg:text-4 xl:text-xl
+        transition-all duration-300 
+
+        ${
+          pathname === path
+            ? `
+                text-[#0C1E21] 
+                after:content-['']
+                after:absolute
+                after:left-0
+                after:bottom-0
+                after:w-full 
+                after:h-[1px] 
+                after:bg-[#0C1E21] 
+                after:transition-all after:duration-300 after:ease-out 
+                hover:after:w-0
+              `
+            : `
+                text-[#103E3A] 
+                after:content-['']
+                after:absolute
+                after:left-0
+                after:bottom-0
+                after:w-0 
+                after:h-[1px] 
+                after:bg-[#103E3A] 
+                after:transition-all after:duration-300 after:ease-in-out 
+                hover:after:w-full 
+                hover:text-[#0C1E21]
+              `
+        }
+      `}
                   >
                     {page}
                   </Link>

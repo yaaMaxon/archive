@@ -17,14 +17,20 @@ const QuestionBox = () => {
     }));
   };
   return (
-    <div className="flex flex-col gap-8 lg:gap-32 lg:flex-row lg:justify-center px-6 lg:px-16 pt-[56px] lg:pt-[96px] lg:relative">
+    <div className="flex flex-col gap-8 lg:gap-32 lg:flex-row lg:justify-center px-6 lg:px-16 pb-[56px] lg:pb-[96px] lg:relative">
       <div className="pb-2 border-b border-b-[#E8EDED] min-w-[314px] max-h-8 lg:sticky lg:top-24">
         <span className="text-[#0C1E21] uppercase">Цікаво знати</span>
       </div>
       <div className="flex-1/2 flex-col lg:max-w-[850px]">
-        <h2 className="text-[32px] lg:text-[48px] text-[#0C1E21] leading-[100%]">
+        <motion.h2
+          initial={{ y: 50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.5 }}
+          className="text-[32px] lg:text-[48px] text-[#0C1E21] leading-[100%]"
+        >
           Знайди відповідь тут
-        </h2>
+        </motion.h2>
         <ul className="flex gap-6 flex-col lg:gap-[32px] pt-[32px] lg:pt-[64px]">
           {frequantlyQuestions.map(({ question, answer }, index) => {
             const isOpen = isAnswerVisible[index];
@@ -33,9 +39,9 @@ const QuestionBox = () => {
               <li
                 key={index}
                 onClick={() => handleIsAnswerVisible(index)}
-                className="cursor-pointer"
+                className="cursor-pointer border-b border-b-[#E8EDED] last:border-b-0"
               >
-                <div className="pb-[32px] border-b border-b-[#E8EDED]">
+                <div className="pb-[32px]">
                   <div className="flex gap-4 md:justify-between items-center">
                     <span className="text-[#0C1E21] text-xl lg:text-2xl">
                       {question}

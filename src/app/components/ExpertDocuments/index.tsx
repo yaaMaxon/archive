@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { expertDocumentsList } from "@/app/constants/ExpertDocumentsSettings";
 
 const ExpertDocuments = () => {
@@ -13,9 +14,15 @@ const ExpertDocuments = () => {
       </div>
       <div className="flex flex-col gap-12 lg:max-w-[850px]">
         <div className="flex flex-col gap-4">
-          <h2 className="text-[#172629] text-3xl lg:text-5xl leading-[100%]">
+          <motion.h2
+            initial={{ y: 50, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.5 }}
+            className="text-[#172629] text-3xl lg:text-5xl leading-[100%]"
+          >
             Оцінка цінності документів
-          </h2>
+          </motion.h2>
           <p className="text-[#0C1E21]">
             При впорядкуванні документів підприємств найбільш складним є
             ком­плекс робіт за визначенням історичної цінності документів, що

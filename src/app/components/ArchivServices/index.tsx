@@ -36,7 +36,7 @@ const ArchivServices = () => {
                 </p>
                 <a
                   href={path}
-                  className="text-sm lg:text-base text-[#0C1E21] underline cursor-pointer"
+                  className="relative text-sm lg:text-base text-[#0C1E21] cursor-pointer overflow-hidden before:absolute before:left-0 before:bottom-0 before:h-[1px] before:w-full before:bg-[#0C1E21] before:transition-all before:duration-300 hover:before:w-0 hover:before:right-0"
                 >
                   Читати більше
                 </a>

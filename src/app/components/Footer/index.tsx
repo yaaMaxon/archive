@@ -25,9 +25,9 @@ const Footer = () => {
               </div>
               <a
                 href={href}
-                className={`hover:underline underline-offset-6 text-white ${
+                className={`relative text-white overflow-hidden ${
                   index === 0 && "pb-1"
-                }`}
+                } after:absolute after:left-0 after:bottom-0 after:h-[1px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full`}
               >
                 {text}
               </a>
@@ -61,9 +61,42 @@ const Footer = () => {
                 <li key={page}>
                   <Link
                     href={path}
-                    className={`${
-                      pathname === path && "underline text-[#0C1E21]"
-                    } lg:text-4 text-[#9A9FA0] hover:underline transition-all duration-300`}
+                    className={`
+        relative
+        inline-block 
+        lg:text-4 xl:text-xl 
+        transition-all duration-300 
+
+        ${
+          pathname === path
+            ? `
+                text-[#9A9FA0]
+                after:content-['']
+                after:absolute
+                after:left-0
+                after:bottom-0
+                after:w-full 
+                after:h-[1px] 
+                after:bg-[#9A9FA0] 
+                after:transition-all after:duration-300 after:ease-out 
+                hover:after:w-0 
+                hover:text-white
+              `
+            : `
+                text-[#9A9FA0] 
+                after:content-['']
+                after:absolute
+                after:left-0
+                after:bottom-0
+                after:w-0 
+                after:h-[1px] 
+                after:bg-white 
+                after:transition-all after:duration-300 after:ease-in-out 
+                hover:after:w-full
+                hover:text-white 
+              `
+        }
+      `}
                   >
                     {page}
                   </Link>
