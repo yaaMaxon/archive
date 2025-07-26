@@ -1,42 +1,59 @@
 export const frequantlyQuestions = [
-  { 
-    question: " Lorem ipsum dolor sit amet consectetur adipisicing elit?",
-    answer: " Vel sapiente, voluptatem commodi cum beatae porro nobis eligendi pariatur, voluptate voluptates dolor."
+  {
+    question:
+      "Які документи підлягають архівному зберіганню згідно законодавства України?",
+    answer:
+      "До архіву передають кадрові, бухгалтерські, юридичні та інші важливі документи згідно номенклатури.",
   },
-  { 
-    question: " Lorem ipsum dolor sit amet consectetur adipisicing elit?",
-    answer: " Vel sapiente, voluptatem commodi cum beatae porro nobis eligendi pariatur, voluptate voluptates dolor."
+  {
+    question:
+      "Чи можете ви допомогти з експертизою цінності документів і формуванням номенклатури справ?",
+    answer:
+      "Так, ми допомагаємо з експертизою та створенням номенклатури відповідно до вимог держархіву.",
   },
-  { 
-    question: " Lorem ipsum dolor sit amet consectetur adipisicing elit?",
-    answer: " Vel sapiente, voluptatem commodi cum beatae porro nobis eligendi pariatur, voluptate voluptates dolor."
+  {
+    question:
+      "Чи потрібно створювати архів у приватній компанії, якщо в нас небагато документів?",
+    answer:
+      "Так, навіть невелика компанія має вести архів згідно законодавства.",
   },
-  { 
-    question: " Lorem ipsum dolor sit amet consectetur adipisicing elit?",
-    answer: " Vel sapiente, voluptatem commodi cum beatae porro nobis eligendi pariatur, voluptate voluptates dolor."
+  {
+    question:
+      "Скільки часу потрібно зберігати бухгалтерську документацію та договори?",
+    answer:
+      "Бухгалтерські документи зберігаються мінімум 3–5 років, деякі — до 75 років.",
   },
-  { 
-    question: " Lorem ipsum dolor sit amet consectetur adipisicing elit?",
-    answer: " Vel sapiente, voluptatem commodi cum beatae porro nobis eligendi pariatur, voluptate voluptates dolor."
+  {
+    question:
+      "Які штрафи можуть бути за неправильне ведення архіву або відсутність його?",
+    answer:
+      "Можливі адміністративні штрафи та зауваження з боку контролюючих органів.",
   },
-  { 
-    question: " Lorem ipsum dolor sit amet consectetur adipisicing elit?",
-    answer: " Vel sapiente, voluptatem commodi cum beatae porro nobis eligendi pariatur, voluptate voluptates dolor."
+  {
+    question:
+      "Чи проводите ви підшивку, палітурку, нумерацію документів для передачі в архів?",
+    answer: "Так, ми повністю готуємо документи до архівного зберігання.",
   },
-    { 
-    question: " Lorem ipsum dolor sit amet consectetur adipisicing elit?",
-    answer: " Vel sapiente, voluptatem commodi cum beatae porro nobis eligendi pariatur, voluptate voluptates dolor."
+  {
+    question:
+      "Чи можливо архівувати документи у вас, якщо в нас немає окремого приміщення для архіву?",
+    answer:
+      "Так, ми можемо надати послугу зовнішнього зберігання або облаштувати архів у вас.",
   },
-    { 
-    question: " Lorem ipsum dolor sit amet consectetur adipisicing elit?",
-    answer: " Vel sapiente, voluptatem commodi cum beatae porro nobis eligendi pariatur, voluptate voluptates dolor."
+  {
+    question:
+      "Хто відповідальний за збереження документів у компанії — секретар, архіваріус чи керівник?",
+    answer:
+      "Відповідальним є керівник, але призначається уповноважена особа (часто секретар або архіваріус).",
   },
-    { 
-    question: " Lorem ipsum dolor sit amet consectetur adipisicing elit?",
-    answer: " Vel sapiente, voluptatem commodi cum beatae porro nobis eligendi pariatur, voluptate voluptates dolor."
+  {
+    question:
+      "Чи допомагаєте ви з підготовкою документів до перевірки (наприклад, ДПС, Держархів)?",
+    answer: "Так, ми готуємо документи згідно вимог контролюючих органів.",
   },
-    { 
-    question: " Lorem ipsum dolor sit amet consectetur adipisicing elit?",
-    answer: " Vel sapiente, voluptatem commodi cum beatae porro nobis eligendi pariatur, voluptate voluptates dolor."
+  {
+    question: "Яка вартість ваших архівних послуг і як формується кошторис?",
+    answer:
+      "Ціна залежить від обсягу, стану документів і послуг. Орієнтовний кошторис — безкоштовно.",
   },
 ];

@@ -9,21 +9,76 @@ const BookbindingWork = () => {
       id="bookbindingWork"
       className="flex flex-col gap-8 lg:gap-32 lg:flex-row lg:justify-center pb-14 px-6 lg:px-16 lg:pb-24 scroll-mt-[58px] lg:scroll-mt-[98px] lg:relative"
     >
-      <div className="pb-2 border-b border-b-[#E8EDED] lg:min-w-[314px] max-h-8 lg:sticky lg:top-24">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.5 }}
+        variants={{
+          hidden: { x: -100, opacity: 0 },
+          visible: {
+            x: 0,
+            opacity: 1,
+            transition: {
+              type: "spring",
+              stiffness: 120,
+              damping: 18,
+            },
+          },
+        }}
+        className="pb-2 border-b border-b-[#E8EDED] lg:min-w-[314px] max-h-8 lg:sticky lg:top-24"
+      >
         <span className="text-[#0C1E21] uppercase">Опис документів</span>
-      </div>
-      <div className="flex flex-col gap-12 lg:max-w-[850px]">
+      </motion.div>
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={{
+          hidden: { opacity: 0 },
+          visible: {
+            opacity: 1,
+            transition: {
+              staggerChildren: 0.1,
+              delayChildren: 0.1,
+            },
+          },
+        }}
+        className="flex flex-col gap-12 lg:max-w-[850px]"
+      >
         <div className="flex flex-col gap-4">
           <motion.h2
-            initial={{ y: 50, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            viewport={{ once: true, amount: 0.5 }}
+            variants={{
+              hidden: { y: -30, opacity: 0 },
+              visible: {
+                y: 0,
+                opacity: 1,
+                transition: {
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 15,
+                },
+              },
+            }}
             className="text-[#172629] text-3xl lg:text-5xl leading-[100%]"
           >
             Описи документів та акти на знищення
           </motion.h2>
-          <p className="text-[#0C1E21]">
+          <motion.p
+            variants={{
+              hidden: { y: 30, opacity: 0, scale: 0.98 },
+              visible: {
+                y: 0,
+                opacity: 1,
+                scale: 1,
+                transition: {
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 15,
+                },
+              },
+            }}
+            className="text-[#0C1E21]"
+          >
             За результатами експертизи цінності документів працівники ФОП
             складають опис документів у Львові постійного і тривалого термінів
             зберігання та акти про виділення для знищення документів, що не
@@ -42,20 +97,80 @@ const BookbindingWork = () => {
             здають вказані документи в господарську службу Підприємства або
             спеціалізованим підприємствам по заготівлі вторинної сировини для їх
             фізичного знищення.
-          </p>
+          </motion.p>
         </div>
         <div className="flex flex-col gap-4">
-          <h2 className="text-[#172629] text-2xl lg:text-4xl leading-[100%]">
+          <motion.h2
+            variants={{
+              hidden: { y: -20, opacity: 0 },
+              visible: {
+                y: 0,
+                opacity: 1,
+                transition: {
+                  type: "spring",
+                  stiffness: 120,
+                  damping: 18,
+                },
+              },
+            }}
+            className="text-[#172629] text-2xl lg:text-4xl leading-[100%]"
+          >
             Оформлення справ постійного і тривалого термінів зберігання
-          </h2>
-          <ul className="list-disc pl-4">
+          </motion.h2>
+          <motion.ul
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.08,
+                  delayChildren: 0.05,
+                },
+              },
+            }}
+            className="list-disc pl-4"
+          >
             {bookbindingWork.map(({ process }, index) => (
-              <li key={index} className="lg:text-lg text-[rgba(6,39,44,0.60)]">
+              <motion.li
+                key={index}
+                variants={{
+                  hidden: { y: 20, opacity: 0, scale: 0.98 },
+                  visible: {
+                    y: 0,
+                    opacity: 1,
+                    scale: 1,
+                    transition: {
+                      type: "spring",
+                      stiffness: 100,
+                      damping: 15,
+                    },
+                  },
+                }}
+                className="lg:text-lg text-[rgba(6,39,44,0.60)]"
+              >
                 {process}
-              </li>
+              </motion.li>
             ))}
-          </ul>
-          <p className="text-[#0C1E21]">
+          </motion.ul>
+          <motion.p
+            variants={{
+              hidden: { y: 30, opacity: 0, scale: 0.98 },
+              visible: {
+                y: 0,
+                opacity: 1,
+                scale: 1,
+                transition: {
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 15,
+                },
+              },
+            }}
+            className="text-[#0C1E21]"
+          >
             Після закінчення діловодного року в написі на обкладинках справ
             постійного і тривалого термінів зберігання вносять необхідні
             уточнення, перевіряють відповідність заголовків справ на обкладинці
@@ -87,9 +202,9 @@ const BookbindingWork = () => {
             приховування офіційних або приватних документів є незаконними і
             тягне за собою відповідальність згідно з чинним адміністративним та
             кримінальним законодавством України.
-          </p>
+          </motion.p>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

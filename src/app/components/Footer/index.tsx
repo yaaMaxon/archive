@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import Button from "../Button";
 import Link from "next/link";
 import { navigatPages } from "@constants/NavigatSettings";
-import { mySocialNetworks } from "@/app/constants/ContactsSettings";
+import { myContacts, mySocialNetworks } from "@/app/constants/ContactsSettings";
 
 const Footer = () => {
   const pathname = usePathname();
@@ -18,7 +18,7 @@ const Footer = () => {
       <div className="flex flex-col lg:flex-row lg:justify-between gap-6 py-12 px-6 lg:px-16 xl:px-[120px] bg-[#142528]">
         <span className="text-[32px] text-white">Контакти:</span>
         <ul className="flex flex-col gap-4 lg:flex-row lg:gap-12">
-          {mySocialNetworks.map(({ icon, href, text }, index) => (
+          {myContacts?.map(({ icon, href, text }, index) => (
             <li key={index} className="flex items-center gap-4">
               <div className="rounded-[500px] border border-white/12 bg-white/5 backdrop-blur-[15px] p-3 text-white">
                 {icon}
@@ -109,6 +109,51 @@ const Footer = () => {
             >
               Замовити дзвінок
             </Button>
+          </div>
+        </div>
+        <div className="flex flex-col gap-5 lg:gap-6">
+          <span className="text-white border-b border-white/10 pb-2">
+            Соціальні мережі:
+          </span>
+          <div className="flex flex-col gap-6">
+            <ul className="flex flex-col gap-4">
+              {mySocialNetworks?.map(({ icon, href, text }, index) => (
+                <li key={index} className="flex items-center gap-4">
+                  <div className="rounded-[500px] border border-white/12 bg-white/5 backdrop-blur-[15px] p-2 text-white">
+                    {icon}
+                  </div>
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`relative text-[#9A9FA0] overflow-hidden uppercase ${
+                      index === 0 && "pb-1"
+                    } after:absolute after:left-0 after:bottom-0 after:h-[1px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full hover:text-white`}
+                  >
+                    {text}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <div className="flex flex-col gap-5 lg:gap-6">
+          <span className="text-white border-b border-white/10 pb-2">
+            Партнери:
+          </span>
+          <div className="flex flex-col gap-3">
+            <p className="text-[#9A9FA0] text-sm max-w-[270px]">
+              Аудит-Львів — надійний партнер у сфері аудиту, обліку та
+              фінансового супроводу для малого та середнього бізнесу.
+            </p>
+            <a
+              href="http://audit.lviv.ua"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#9A9FA0] hover:text-white underline"
+            >
+              audit.lviv.ua
+            </a>
           </div>
         </div>
       </div>

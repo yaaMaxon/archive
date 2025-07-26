@@ -3,7 +3,7 @@
 // import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 // import StarLogo from "@assets/icons/starLogo.svg";
 // import PositivusLogo from "@assets/icons/positivusLogo.svg";
@@ -16,6 +16,9 @@ import Button from "@components/Button";
 const NavBar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setMobileMenuState] = useState(false);
+  const [isHeaderRotated, setIsHeaderRotated] = useState(false);
+  const scrollYRef = useRef(0);
+
   const pathname = usePathname();
   const router = useRouter();
   const handleButtonClick = () => {
@@ -37,6 +40,16 @@ const NavBar = () => {
       } else {
         setIsScrolled(false);
       }
+
+      if (window.scrollY > 96) {
+        if (window.scrollY > scrollYRef.current) {
+          setIsHeaderRotated(true);
+        } else {
+          setIsHeaderRotated(false);
+        }
+      }
+
+      scrollYRef.current = window.scrollY;
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -44,23 +57,33 @@ const NavBar = () => {
   }, []);
 
   const getHeaderStyles = () => {
+    const s = [];
+
     if (isMobileMenuOpen) {
-      return "bg-white";
+      s.push("bg-white");
+    } else if (isScrolled) {
+      s.push("bg-white/75");
+    } else {
+      s.push("bg-transparent");
     }
 
-    if (isScrolled) {
-      return "bg-white/75";
+    if (!isMobileMenuOpen) {
+      if (isHeaderRotated) {
+        s.push("rotate-x-90");
+      } else {
+        s.push("rotate-x-0");
+      }
+    } else {
+      s.push("rotate-x-0");
     }
 
-    if (!isScrolled) {
-      return "bg-transparent";
-    }
+    return s.join(" ");
   };
 
   return (
     <>
       <header
-        className={`sticky left-0 top-0 py-[16px] lg:py-[24px] px-6 lg:px-16 z-[200] transition-colors duration-300 ${getHeaderStyles()}`}
+        className={`sticky left-0 origin-top top-0 py-[16px] lg:py-[24px] px-6 lg:px-16 z-[200] transition-all duration-500 ${getHeaderStyles()}`}
       >
         <nav className="flex justify-between items-cente">
           <Link
@@ -87,14 +110,6 @@ const NavBar = () => {
             <ul className="flex items-center lg:gap-8 xl:gap-10">
               {navigatPages.map(({ page, path }) => (
                 <li key={page}>
-                  {/* <Link
-                    href={path}
-                    className={`${
-                      pathname === path && "underline text-[#0C1E21]"
-                    } lg:text-4 text-[#103E3A] xl:text-xl hover:underline transition-all duration-300`}
-                  >
-                    {page}
-                  </Link> */}
                   <Link
                     href={path}
                     className={`

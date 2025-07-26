@@ -2,18 +2,65 @@
 
 import Image from "next/image";
 import { archivServicesList } from "@/app/constants/ArchivServicesSettings";
+import { motion } from "framer-motion";
 
 const ArchivServices = () => {
   return (
     <div className="flex flex-col gap-6 px-6 lg:px-16 mt-[56px] lg:mt-[96px] pb-14 lg:pb-24 lg:gap-32 lg:flex-row lg:justify-center lg:relative">
-      <div className="pb-2 border-b border-b-[#E8EDED] lg:min-w-[314px] max-h-8 lg:sticky lg:top-24">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.5 }}
+        variants={{
+          hidden: { x: -100, opacity: 0 },
+          visible: {
+            x: 0,
+            opacity: 1,
+            transition: {
+              type: "spring",
+              stiffness: 120,
+              damping: 18,
+            },
+          },
+        }}
+        className="pb-2 border-b border-b-[#E8EDED] lg:min-w-[314px] max-h-8 lg:sticky lg:top-24"
+      >
         <span className="text-[#0C1E21] uppercase">Послуги</span>
-      </div>
-      <div>
+      </motion.div>
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={{
+          hidden: { opacity: 0 },
+          visible: {
+            opacity: 1,
+            transition: {
+              staggerChildren: 0.15,
+              delayChildren: 0.1,
+            },
+          },
+        }}
+      >
         <ul className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-x-12 lg:gap-y-16">
           {archivServicesList.map(
             ({ image, title, price, description, path }, index) => (
-              <li key={index}>
+              <motion.li
+                key={index}
+                variants={{
+                  hidden: { y: 50, opacity: 0, scale: 0.95 },
+                  visible: {
+                    y: 0,
+                    opacity: 1,
+                    scale: 1,
+                    transition: {
+                      type: "spring",
+                      stiffness: 100,
+                      damping: 15,
+                    },
+                  },
+                }}
+              >
                 <div className="relative mb-4">
                   <Image
                     src={image}
@@ -25,26 +72,84 @@ const ArchivServices = () => {
                   </span>
                   <div className="absolute inset-0 bg-[#0D1E21] opacity-40 rounded-lg"></div>
                 </div>
-                <div className="pb-2 border-b border-b-[#E8EDED] lg:min-w-[250px] max-h-8">
+                <motion.div
+                  variants={{
+                    hidden: { y: -20, opacity: 0 },
+                    visible: {
+                      y: 0,
+                      opacity: 1,
+                      transition: {
+                        type: "spring",
+                        stiffness: 120,
+                        damping: 18,
+                      },
+                    },
+                  }}
+                  className="pb-2 border-b border-b-[#E8EDED] lg:min-w-[250px] max-h-8"
+                >
                   <span className="text-sm lg:text-base text-[#050d0e] uppercase">
                     {price}
                   </span>
-                </div>
-                <h3 className="text-2xl text-[#0C1E21] mt-4">{title}</h3>
-                <p className="lg:text-lg text-[rgba(6,39,44,0.60)] mt-2 max-w-[570px] mb-2">
+                </motion.div>
+                <motion.h3
+                  variants={{
+                    hidden: { y: 30, opacity: 0, scale: 0.98 },
+                    visible: {
+                      y: 0,
+                      opacity: 1,
+                      scale: 1,
+                      transition: {
+                        type: "spring",
+                        stiffness: 100,
+                        damping: 15,
+                      },
+                    },
+                  }}
+                  className="text-2xl text-[#0C1E21] mt-4"
+                >
+                  {title}
+                </motion.h3>
+                <motion.p
+                  variants={{
+                    hidden: { y: 30, opacity: 0, scale: 0.98 },
+                    visible: {
+                      y: 0,
+                      opacity: 1,
+                      scale: 1,
+                      transition: {
+                        type: "spring",
+                        stiffness: 100,
+                        damping: 15,
+                      },
+                    },
+                  }}
+                  className="lg:text-lg text-[rgba(6,39,44,0.60)] mt-2 max-w-[570px] mb-2"
+                >
                   {description}
-                </p>
-                <a
+                </motion.p>
+                <motion.a
                   href={path}
+                  variants={{
+                    hidden: { y: 20, opacity: 0 },
+                    visible: {
+                      y: 0,
+                      opacity: 1,
+                      transition: {
+                        type: "spring",
+                        stiffness: 120,
+                        damping: 18,
+                      },
+                    },
+                  }}
                   className="relative text-sm lg:text-base text-[#0C1E21] cursor-pointer overflow-hidden before:absolute before:left-0 before:bottom-0 before:h-[1px] before:w-full before:bg-[#0C1E21] before:transition-all before:duration-300 hover:before:w-0 hover:before:right-0"
                 >
                   Читати більше
-                </a>
-              </li>
+                </motion.a>
+              </motion.li>
             )
           )}
         </ul>
-      </div>
+      </motion.div>
     </div>
   );
 };

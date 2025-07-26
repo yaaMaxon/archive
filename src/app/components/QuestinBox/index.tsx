@@ -18,26 +18,82 @@ const QuestionBox = () => {
   };
   return (
     <div className="flex flex-col gap-8 lg:gap-32 lg:flex-row lg:justify-center px-6 lg:px-16 pb-[56px] lg:pb-[96px] lg:relative">
-      <div className="pb-2 border-b border-b-[#E8EDED] min-w-[314px] max-h-8 lg:sticky lg:top-24">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.5 }}
+        variants={{
+          hidden: { x: -100, opacity: 0 },
+          visible: {
+            x: 0,
+            opacity: 1,
+            transition: {
+              type: "spring",
+              stiffness: 120,
+              damping: 18,
+            },
+          },
+        }}
+        className="pb-2 border-b border-b-[#E8EDED] min-w-[314px] max-h-8 lg:sticky lg:top-24"
+      >
         <span className="text-[#0C1E21] uppercase">Цікаво знати</span>
-      </div>
+      </motion.div>
       <div className="flex-1/2 flex-col lg:max-w-[850px]">
         <motion.h2
-          initial={{ y: 50, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true, amount: 0.5 }}
+          variants={{
+            hidden: { y: -30, opacity: 0 },
+            visible: {
+              y: 0,
+              opacity: 1,
+              transition: {
+                type: "spring",
+                stiffness: 100,
+                damping: 15,
+              },
+            },
+          }}
           className="text-[32px] lg:text-[48px] text-[#0C1E21] leading-[100%]"
         >
           Знайди відповідь тут
         </motion.h2>
-        <ul className="flex gap-6 flex-col lg:gap-[32px] pt-[32px] lg:pt-[64px]">
+        <motion.ul
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.15,
+                delayChildren: 0.1,
+              },
+            },
+          }}
+          className="flex gap-6 flex-col lg:gap-[32px] pt-[32px] lg:pt-[64px]"
+        >
           {frequantlyQuestions.map(({ question, answer }, index) => {
             const isOpen = isAnswerVisible[index];
 
             return (
-              <li
+              <motion.li
                 key={index}
+                variants={{
+                  hidden: { y: 50, opacity: 0, scale: 0.95 },
+                  visible: {
+                    y: 0,
+                    opacity: 1,
+                    scale: 1,
+                    transition: {
+                      type: "spring",
+                      stiffness: 100,
+                      damping: 15,
+                    },
+                  },
+                }}
                 onClick={() => handleIsAnswerVisible(index)}
                 className="cursor-pointer border-b border-b-[#E8EDED] last:border-b-0"
               >
@@ -72,10 +128,10 @@ const QuestionBox = () => {
                     )}
                   </AnimatePresence>
                 </div>
-              </li>
+              </motion.li>
             );
           })}
-        </ul>
+        </motion.ul>
       </div>
     </div>
   );

@@ -40,40 +40,130 @@ const AboutServices = () => {
                 </span>
               </motion.div>
             </div>
-            <div className="flex flex-col items-start px-6 lg:w-[50%] lg:px-8 lg:pt-4 xl:px-24 xl:pt-16">
-              <div
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              variants={{
+                hidden: { opacity: 0 },
+                visible: {
+                  opacity: 1,
+                  transition: {
+                    staggerChildren: 0.1,
+                    delayChildren: 0.1,
+                  },
+                },
+              }}
+              className="flex flex-col items-start px-6 lg:w-[50%] lg:px-8 lg:pt-4 xl:px-24 xl:pt-16"
+            >
+              <motion.div
+                variants={{
+                  hidden: { y: -20, opacity: 0 },
+                  visible: {
+                    y: 0,
+                    opacity: 1,
+                    transition: {
+                      type: "spring",
+                      stiffness: 120,
+                      damping: 18,
+                    },
+                  },
+                }}
                 className="flex justify-center rounded-sm border
           border-[#E8EDED] bg-[#F4F8F8] backdrop-blur-[15px] py-[6px] px-2 mb-4"
               >
                 <span className="text-[#0C1E21] text-sm uppercase">
                   {badge}
                 </span>
-              </div>
-              <h3 className="text-[#172629] text-3xl lg:text-4xl xl:text-5xl leading-[100%] mb-4 lg:mb-4 xl:mb-[32px]">
+              </motion.div>
+              <motion.h3
+                variants={{
+                  hidden: { y: 30, opacity: 0, scale: 0.98 },
+                  visible: {
+                    y: 0,
+                    opacity: 1,
+                    scale: 1,
+                    transition: {
+                      type: "spring",
+                      stiffness: 100,
+                      damping: 15,
+                    },
+                  },
+                }}
+                className="text-[#172629] text-3xl lg:text-4xl xl:text-5xl leading-[100%] mb-4 lg:mb-4 xl:mb-[32px]"
+              >
                 {heading}
-              </h3>
-              <p className="text-[#9A9FA0] text-sm lg:text-lg mb-6 lg:mb-3 xl:mb-8">
+              </motion.h3>
+              <motion.p
+                variants={{
+                  hidden: { y: 30, opacity: 0, scale: 0.98 },
+                  visible: {
+                    y: 0,
+                    opacity: 1,
+                    scale: 1,
+                    transition: {
+                      type: "spring",
+                      stiffness: 100,
+                      damping: 15,
+                    },
+                  },
+                }}
+                className="text-[#9A9FA0] text-sm lg:text-lg mb-6 lg:mb-3 xl:mb-8"
+              >
                 {description}
-              </p>
+              </motion.p>
               <div>
-                <div className="pb-2 border-b border-b-[#E8EDED] max-h-8 mb-4 xl:mb-6">
+                <motion.div
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.5 }}
+                  variants={{
+                    hidden: { x: -100, opacity: 0 },
+                    visible: {
+                      x: 0,
+                      opacity: 1,
+                      transition: {
+                        type: "spring",
+                        stiffness: 120,
+                        damping: 18,
+                      },
+                    },
+                  }}
+                  className="pb-2 border-b border-b-[#E8EDED] max-h-8 mb-4 xl:mb-6"
+                >
                   <span className="text-[#0C1E21] text-sm uppercase">
                     {stagesTitle}
                   </span>
-                </div>
+                </motion.div>
                 <ul className="flex flex-col gap-3 xl:gap-4">
                   {stages.map((stage, index) => (
-                    <li key={index} className="flex items-center gap-4">
+                    <motion.li
+                      key={index}
+                      variants={{
+                        hidden: { y: 20, opacity: 0, scale: 0.98 },
+                        visible: {
+                          y: 0,
+                          opacity: 1,
+                          scale: 1,
+                          transition: {
+                            type: "spring",
+                            stiffness: 100,
+                            damping: 15,
+                          },
+                        },
+                      }}
+                      className="flex items-center gap-4"
+                    >
                       <div className="rounded-full border border-[#E8EDED] bg-[#F4F8F8] py-1 px-1 text-[#0C1E21]">
                         {" "}
                         <CheckIcon />
                       </div>
                       <span className="text-[#0C1E21]">{stage}</span>
-                    </li>
+                    </motion.li>
                   ))}
                 </ul>
               </div>
-            </div>
+            </motion.div>
           </div>
         )
       )}

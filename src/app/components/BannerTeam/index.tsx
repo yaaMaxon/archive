@@ -26,21 +26,58 @@ const BannerTeam = () => {
         <div className="absolute inset-0 bg-[#0D1E21] opacity-60"></div>
       </div>
       <motion.div
-        initial={{ y: 50, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        viewport={{ once: true, amount: 0.5 }}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={{
+          hidden: { opacity: 0 },
+          visible: {
+            opacity: 1,
+            transition: {
+              staggerChildren: 0.2,
+              delayChildren: 0.3,
+            },
+          },
+        }}
         className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-4 text-center"
       >
-        <div>
+        <motion.div
+          variants={{
+            hidden: { y: -50, opacity: 0 },
+            visible: {
+              y: 0,
+              opacity: 1,
+              transition: {
+                type: "spring",
+                stiffness: 100,
+                damping: 15,
+              },
+            },
+          }}
+        >
           <span
             className="rounded-md border
           border-white/10 bg-white/5 backdrop-blur-[15px] py-[6px] px-2 max-w-[350px] text-white text-sm uppercase"
           >
             Архів — фундамент безпеки
           </span>
-        </div>
-        <h2 className="flex flex-col mb-4 text-center max-w-[700px]">
+        </motion.div>
+        <motion.h2
+          variants={{
+            hidden: { y: 50, opacity: 0, scale: 0.9 },
+            visible: {
+              y: 0,
+              opacity: 1,
+              scale: 1,
+              transition: {
+                type: "spring",
+                stiffness: 100,
+                damping: 15,
+              },
+            },
+          }}
+          className="flex flex-col mb-4 text-center max-w-[700px]"
+        >
           <span className="text-[#9A9FA0] text-4xl lg:text-6xl">
             Довірте збереження
           </span>
@@ -48,12 +85,37 @@ const BannerTeam = () => {
             {" "}
             професіоналам
           </span>
-        </h2>
-        <p className="text-[#9A9FA0] text-center text-[20px] leading-[160%] lg:max-w-[600px]">
+        </motion.h2>
+        <motion.p
+          variants={{
+            hidden: { y: 50, opacity: 0, scale: 0.9 },
+            visible: {
+              y: 0,
+              opacity: 1,
+              scale: 1,
+              transition: {
+                type: "spring",
+                stiffness: 100,
+                damping: 15,
+              },
+            },
+          }}
+          className="text-[#9A9FA0] text-center text-[20px] leading-[160%] lg:max-w-[600px]"
+        >
           Архівні послуги — це не просто зберігання, це відповідальність. Наша
           команда — ваш надійний тил у документообігу.
-        </p>
-        <div className="flex justify-center gap-4">
+        </motion.p>
+        <motion.div
+          variants={{
+            hidden: { y: 50, opacity: 0 },
+            visible: {
+              y: 0,
+              opacity: 1,
+              transition: { type: "spring", stiffness: 100, damping: 15 },
+            },
+          }}
+          className="flex justify-center gap-4"
+        >
           <Button className="bg-white" onClick={handleRoutePrice}>
             Кошторис
           </Button>
@@ -63,7 +125,7 @@ const BannerTeam = () => {
           >
             Послуги
           </Button>
-        </div>
+        </motion.div>
       </motion.div>
     </div>
   );

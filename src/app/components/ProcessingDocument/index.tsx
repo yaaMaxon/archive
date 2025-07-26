@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { mySocialNetworks } from "@/app/constants/ContactsSettings";
+import { myContacts } from "@/app/constants/ContactsSettings";
 import { whatWeOffer } from "@/app/constants/ProcessingDocumentSettings";
 import { whatYouGet } from "@/app/constants/ProcessingDocumentSettings";
 import avatar from "@assets/img/avatar1.webp";
@@ -15,12 +15,59 @@ const ProcessingDocument = () => {
       className="flex flex-col gap-8 lg:gap-32 lg:flex-row lg:justify-center py-14 px-6 lg:px-16 lg:py-24 lg:relative"
     >
       <div className="flex self-start flex-col gap-5 lg:gap-8 lg:sticky lg:top-24">
-        <div className="pb-2 border-b border-b-[#E8EDED] lg:max-w-[314px] max-h-8">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
+          variants={{
+            hidden: { x: -100, opacity: 0 },
+            visible: {
+              x: 0,
+              opacity: 1,
+              transition: {
+                type: "spring",
+                stiffness: 120,
+                damping: 18,
+              },
+            },
+          }}
+          className="pb-2 border-b border-b-[#E8EDED] lg:max-w-[314px] max-h-8"
+        >
           <span className="text-[#0C1E21] uppercase">Контакти</span>
-        </div>
-        <ul className="flex flex-col gap-4">
-          {mySocialNetworks.map(({ icon, href, text }, index) => (
-            <li key={index} className="flex items-center gap-4">
+        </motion.div>
+        <motion.ul
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.1,
+                delayChildren: 0.1,
+              },
+            },
+          }}
+          className="flex flex-col gap-4"
+        >
+          {myContacts.map(({ icon, href, text }, index) => (
+            <motion.li
+              key={index}
+              variants={{
+                hidden: { x: -50, opacity: 0 },
+                visible: {
+                  x: 0,
+                  opacity: 1,
+                  transition: {
+                    type: "spring",
+                    stiffness: 100,
+                    damping: 15,
+                  },
+                },
+              }}
+              className="flex items-center gap-4"
+            >
               <div className="rounded-full border border-[#E8EDED] bg-[#F4F8F8] py-2 px-3 text-[#0C1E21]">
                 {icon}
               </div>
@@ -32,10 +79,28 @@ const ProcessingDocument = () => {
               >
                 {text}
               </a>
-            </li>
+            </motion.li>
           ))}
-        </ul>
-        <div className="flex flex-col gap-4 bg-[#F4F8F8] p-6 lg:p-8 max-h-[270px] lg:max-w-[350px]">
+        </motion.ul>
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
+          variants={{
+            hidden: { y: 50, opacity: 0, scale: 0.95 },
+            visible: {
+              y: 0,
+              opacity: 1,
+              scale: 1,
+              transition: {
+                type: "spring",
+                stiffness: 100,
+                damping: 15,
+              },
+            },
+          }}
+          className="flex flex-col gap-4 bg-[#F4F8F8] p-6 lg:p-8 max-h-[270px] lg:max-w-[350px]"
+        >
           <div className="pb-2 border-b border-b-[#E8EDED] lg:min-w-[250px] max-h-8">
             <span className="text-[#0C1E21] uppercase">Архівіст</span>
           </div>
@@ -59,20 +124,58 @@ const ProcessingDocument = () => {
             ФОП Гупало Петро Євгенович надає широкий комплекс архівних послуг у
             Львівській області.
           </p>
-        </div>
+        </motion.div>
       </div>
-      <div className="flex flex-col gap-12 lg:max-w-[850px]">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={{
+          hidden: { opacity: 0 },
+          visible: {
+            opacity: 1,
+            transition: {
+              staggerChildren: 0.1,
+              delayChildren: 0.1,
+            },
+          },
+        }}
+        className="flex flex-col gap-12 lg:max-w-[850px]"
+      >
         <div className="flex flex-col gap-4">
           <motion.h2
-            initial={{ y: 50, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            viewport={{ once: true, amount: 0.5 }}
+            variants={{
+              hidden: { y: -30, opacity: 0 },
+              visible: {
+                y: 0,
+                opacity: 1,
+                transition: {
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 15,
+                },
+              },
+            }}
             className="text-[#172629] text-3xl lg:text-5xl leading-[100%]"
           >
             Архівна обробка документів
           </motion.h2>
-          <p className="text-[#0C1E21]">
+          <motion.p
+            variants={{
+              hidden: { y: 30, opacity: 0, scale: 0.98 },
+              visible: {
+                y: 0,
+                opacity: 1,
+                scale: 1,
+                transition: {
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 15,
+                },
+              },
+            }}
+            className="text-[#0C1E21]"
+          >
             Робота архіва – упорядкувати документи, обробити належним чином,
             відповідно до законодавства, документи Вашого підприємства або
             організації. Відібрати протерміновані документи для їх знищення,
@@ -87,33 +190,129 @@ const ProcessingDocument = () => {
             виконуються установами, організаціями і підприємствами, незалежно
             від функціонально-цільового призначення, рівня і масштабу діяльності
             форм власності.
-          </p>
+          </motion.p>
         </div>
         <div className="flex flex-col gap-4">
-          <div className="pb-2 border-b border-b-[#E8EDED] lg:min-w-[250px] max-h-8">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }}
+            variants={{
+              hidden: { y: -20, opacity: 0 },
+              visible: {
+                y: 0,
+                opacity: 1,
+                transition: {
+                  type: "spring",
+                  stiffness: 120,
+                  damping: 18,
+                },
+              },
+            }}
+            className="pb-2 border-b border-b-[#E8EDED] lg:min-w-[250px] max-h-8"
+          >
             <span className="text-[#0C1E21] uppercase">Ми пропонуємо</span>
-          </div>
-          <ul className="list-disc pl-4">
+          </motion.div>
+          <motion.ul
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.08,
+                  delayChildren: 0.05,
+                },
+              },
+            }}
+            className="list-disc pl-4"
+          >
             {whatWeOffer.map(({ process }, index) => (
-              <li key={index} className="lg:text-lg text-[rgba(6,39,44,0.60)]">
+              <motion.li
+                key={index}
+                variants={{
+                  hidden: { y: 20, opacity: 0, scale: 0.98 },
+                  visible: {
+                    y: 0,
+                    opacity: 1,
+                    scale: 1,
+                    transition: {
+                      type: "spring",
+                      stiffness: 100,
+                      damping: 15,
+                    },
+                  },
+                }}
+                className="lg:text-lg text-[rgba(6,39,44,0.60)]"
+              >
                 {process}
-              </li>
+              </motion.li>
             ))}
-          </ul>
+          </motion.ul>
         </div>
         <div className="flex flex-col gap-4">
-          <div className="pb-2 border-b border-b-[#E8EDED] lg:min-w-[250px] max-h-8">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }}
+            variants={{
+              hidden: { y: -20, opacity: 0 },
+              visible: {
+                y: 0,
+                opacity: 1,
+                transition: {
+                  type: "spring",
+                  stiffness: 120,
+                  damping: 18,
+                },
+              },
+            }}
+            className="pb-2 border-b border-b-[#E8EDED] lg:min-w-[250px] max-h-8"
+          >
             <span className="text-[#0C1E21] uppercase">Ви отримаєте</span>
-          </div>
-          <ul className="list-disc pl-4">
+          </motion.div>
+          <motion.ul
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.08,
+                  delayChildren: 0.05,
+                },
+              },
+            }}
+            className="list-disc pl-4"
+          >
             {whatYouGet.map(({ process }, index) => (
-              <li key={index} className="lg:text-lg text-[rgba(6,39,44,0.60)]">
+              <motion.li
+                key={index}
+                variants={{
+                  hidden: { y: 20, opacity: 0, scale: 0.98 },
+                  visible: {
+                    y: 0,
+                    opacity: 1,
+                    scale: 1,
+                    transition: {
+                      type: "spring",
+                      stiffness: 100,
+                      damping: 15,
+                    },
+                  },
+                }}
+                className="lg:text-lg text-[rgba(6,39,44,0.60)]"
+              >
                 {process}
-              </li>
+              </motion.li>
             ))}
-          </ul>
+          </motion.ul>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

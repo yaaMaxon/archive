@@ -9,21 +9,76 @@ const ExpertDocuments = () => {
       id="expertDocuments"
       className="flex flex-col gap-8 lg:gap-32 lg:flex-row lg:justify-center pb-14 px-6 lg:px-16 lg:pb-24 scroll-mt-[58px] lg:scroll-mt-[98px] lg:relative"
     >
-      <div className="pb-2 border-b border-b-[#E8EDED] lg:min-w-[314px] max-h-8 lg:sticky lg:top-24">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.5 }}
+        variants={{
+          hidden: { x: -100, opacity: 0 },
+          visible: {
+            x: 0,
+            opacity: 1,
+            transition: {
+              type: "spring",
+              stiffness: 120,
+              damping: 18,
+            },
+          },
+        }}
+        className="pb-2 border-b border-b-[#E8EDED] lg:min-w-[314px] max-h-8 lg:sticky lg:top-24"
+      >
         <span className="text-[#0C1E21] uppercase">Експертна оцінка</span>
-      </div>
-      <div className="flex flex-col gap-12 lg:max-w-[850px]">
+      </motion.div>
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={{
+          hidden: { opacity: 0 },
+          visible: {
+            opacity: 1,
+            transition: {
+              staggerChildren: 0.2,
+              delayChildren: 0.1,
+            },
+          },
+        }}
+        className="flex flex-col gap-12 lg:max-w-[850px]"
+      >
         <div className="flex flex-col gap-4">
           <motion.h2
-            initial={{ y: 50, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            viewport={{ once: true, amount: 0.5 }}
+            variants={{
+              hidden: { y: -30, opacity: 0 },
+              visible: {
+                y: 0,
+                opacity: 1,
+                transition: {
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 15,
+                },
+              },
+            }}
             className="text-[#172629] text-3xl lg:text-5xl leading-[100%]"
           >
             Оцінка цінності документів
           </motion.h2>
-          <p className="text-[#0C1E21]">
+          <motion.p
+            variants={{
+              hidden: { y: 30, opacity: 0, scale: 0.98 },
+              visible: {
+                y: 0,
+                opacity: 1,
+                scale: 1,
+                transition: {
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 15,
+                },
+              },
+            }}
+            className="text-[#0C1E21]"
+          >
             При впорядкуванні документів підприємств найбільш складним є
             ком­плекс робіт за визначенням історичної цінності документів, що
             підлягають прийому в архів. Склад документів архівного фонду
@@ -33,20 +88,80 @@ const ExpertDocuments = () => {
             підприємства. Експертною оцінкою цінності документів у Львові, цією
             послугою користуються багато компаній, головне знайти справжніх та
             кваліфікованих експертів.
-          </p>
+          </motion.p>
         </div>
         <div className="flex flex-col gap-4">
-          <h3 className="text-[#172629] text-2xl leading-7 lg:text-4xl lg:leading-11">
+          <motion.h3
+            variants={{
+              hidden: { y: -20, opacity: 0 },
+              visible: {
+                y: 0,
+                opacity: 1,
+                transition: {
+                  type: "spring",
+                  stiffness: 120,
+                  damping: 18,
+                },
+              },
+            }}
+            className="text-[#172629] text-2xl leading-7 lg:text-4xl lg:leading-11"
+          >
             Завданнями експертизи цінності документів
-          </h3>
-          <ul className="list-disc pl-4">
+          </motion.h3>
+          <motion.ul
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.08,
+                  delayChildren: 0.05,
+                },
+              },
+            }}
+            className="list-disc pl-4"
+          >
             {expertDocumentsList.map(({ process }, index) => (
-              <li key={index} className="lg:text-lg text-[rgba(6,39,44,0.60)]">
+              <motion.li
+                key={index}
+                variants={{
+                  hidden: { y: 20, opacity: 0, scale: 0.98 },
+                  visible: {
+                    y: 0,
+                    opacity: 1,
+                    scale: 1,
+                    transition: {
+                      type: "spring",
+                      stiffness: 100,
+                      damping: 15,
+                    },
+                  },
+                }}
+                className="lg:text-lg text-[rgba(6,39,44,0.60)]"
+              >
                 {process}
-              </li>
+              </motion.li>
             ))}
-          </ul>
-          <p className="text-[#0C1E21]">
+          </motion.ul>
+          <motion.p
+            variants={{
+              hidden: { y: 30, opacity: 0, scale: 0.98 },
+              visible: {
+                y: 0,
+                opacity: 1,
+                scale: 1,
+                transition: {
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 15,
+                },
+              },
+            }}
+            className="text-[#0C1E21]"
+          >
             Експертиза цінності документів підприємства грунтується на
             традиційних критеріях (науково-обгрунтованих ознаках, на підставі
             яких визначається ступінь цінності документів), сформованих в
@@ -66,13 +181,42 @@ const ExpertDocuments = () => {
             часткова втрата документів. Слід уважно підходити до відбору
             документів тери­торіальних органів, якщо вони включаються до єдиного
             фонду, які до­зволяют всебічно відобразити діяльність підприємства.
-          </p>
+          </motion.p>
         </div>
         <div className="flex flex-col gap-4">
-          <h3 className="text-[#172629] text-2xl lg:text-4xl leading-[100%]">
+          <motion.h3
+            variants={{
+              hidden: { y: -20, opacity: 0 },
+              visible: {
+                y: 0,
+                opacity: 1,
+                transition: {
+                  type: "spring",
+                  stiffness: 120,
+                  damping: 18,
+                },
+              },
+            }}
+            className="text-[#172629] text-2xl lg:text-4xl leading-[100%]"
+          >
             Критерії оцінки цінності документів
-          </h3>
-          <p className="text-[#0C1E21]">
+          </motion.h3>
+          <motion.p
+            variants={{
+              hidden: { y: 30, opacity: 0, scale: 0.98 },
+              visible: {
+                y: 0,
+                opacity: 1,
+                scale: 1,
+                transition: {
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 15,
+                },
+              },
+            }}
+            className="text-[#0C1E21]"
+          >
             До критеріїв змісту документу відноситься значущість інформації
             документу, його унікальність, типовість документу. Найбільшу
             цінність серед документів що утворюються в діяльності органиізації
@@ -101,9 +245,9 @@ const ExpertDocuments = () => {
             З метою всебічного і повного віддзеркалення діяльності підприємства
             при формуванні його архівного фонду потрібне комплексне застосування
             критеріїв експертизи цінності документів.
-          </p>
+          </motion.p>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

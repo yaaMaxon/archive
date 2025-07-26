@@ -2,9 +2,7 @@
 
 import { useForm, SubmitHandler } from "react-hook-form";
 import Button from "../Button";
-// import IllustrationContactUs from "@assets/icons/illustrationContactUs.svg";
-// import SectionTab from "../SectionTab";
-// import { homeContactUs } from "@/app/constants/titleSectionSettings";
+import { motion } from "framer-motion";
 
 export interface ISupportForm {
   name: string;
@@ -44,18 +42,77 @@ const ContactUsForm = () => {
 
   return (
     <div className="flex flex-col gap-[32px] lg:flex-row lg:justify-center lg:gap-16 bg-[#F4F8F8] py-14 px-6 lg:px-16 lg:py-32">
-      <div className="flex flex-col gap-4">
-        <span className="text-[#0C1E21] text-sm rounded-sm border border-[#E8EDED] bg-white py-[6px] px-2 max-w-[95px] uppercase">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.5 }}
+        variants={{
+          hidden: { opacity: 0 },
+          visible: {
+            opacity: 1,
+            transition: {
+              staggerChildren: 0.15,
+              delayChildren: 0.2,
+            },
+          },
+        }}
+        className="flex flex-col gap-4"
+      >
+        <motion.span
+          variants={{
+            hidden: { y: -30, opacity: 0 },
+            visible: {
+              y: 0,
+              opacity: 1,
+              transition: {
+                type: "spring",
+                stiffness: 120,
+                damping: 18,
+              },
+            },
+          }}
+          className="text-[#0C1E21] text-sm rounded-sm border border-[#E8EDED] bg-white py-[6px] px-2 max-w-[95px] uppercase"
+        >
           Контакти
-        </span>
-        <h2 className="text-[#0C1E21] text-[40px] lg:text-[80px] leading-[100%]">
+        </motion.span>
+        <motion.h2
+          variants={{
+            hidden: { y: 40, opacity: 0, scale: 0.95 },
+            visible: {
+              y: 0,
+              opacity: 1,
+              scale: 1,
+              transition: {
+                type: "spring",
+                stiffness: 120,
+                damping: 18,
+              },
+            },
+          }}
+          className="text-[#0C1E21] text-[40px] lg:text-[80px] leading-[100%]"
+        >
           Зв’яжіться з нами
-        </h2>
-        <p className="text-[rgba(6,39,44,0.60)] text-[20px] max-w-[400px] leading-[160%]">
+        </motion.h2>
+        <motion.p
+          variants={{
+            hidden: { y: 40, opacity: 0, scale: 0.95 },
+            visible: {
+              y: 0,
+              opacity: 1,
+              scale: 1,
+              transition: {
+                type: "spring",
+                stiffness: 120,
+                damping: 18,
+              },
+            },
+          }}
+          className="text-[rgba(6,39,44,0.60)] text-[20px] max-w-[400px] leading-[160%]"
+        >
           Маєте запитання щодо архівних послуг, співпраці або просто хочете
           дізнатися більше? Ми завжди на зв`язку!
-        </p>
-      </div>
+        </motion.p>
+      </motion.div>
       <form
         onSubmit={handleSubmit(onSubmit)}
         autoComplete="off"
