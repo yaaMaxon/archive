@@ -115,7 +115,12 @@ const Hero = () => {
           </Button>
         </motion.div>
       </motion.div>
-      <div className="relative h-[290px] md:h-[420px] lg:h-full lg:w-[50%]">
+      <motion.div
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+        className="relative h-[290px] md:h-[420px] lg:h-full lg:w-[50%]"
+      >
         <video
           src="/media/hero2.mp4"
           playsInline
@@ -125,7 +130,7 @@ const Hero = () => {
           className="h-full w-full object-cover"
         ></video>
         <div className="absolute inset-0 bg-[#0D1E21] opacity-40 rounded-lg"></div>
-      </div>
+      </motion.div>
     </div>
   );
 };
