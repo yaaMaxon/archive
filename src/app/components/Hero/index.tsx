@@ -129,7 +129,7 @@ const Hero = () => {
           muted
           className="h-full w-full object-cover"
         ></video>
-        <div className="absolute inset-0 bg-[#0D1E21] opacity-40 rounded-lg"></div>
+        <div className="absolute inset-0 bg-[#0D1E21] opacity-40"></div>
       </motion.div>
     </div>
   );

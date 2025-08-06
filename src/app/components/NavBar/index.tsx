@@ -1,17 +1,16 @@
 "use client";
 
-// import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-// import StarLogo from "@assets/icons/starLogo.svg";
-// import PositivusLogo from "@assets/icons/positivusLogo.svg";
 import BurgerMenu from "@assets/icons/burgerMenu.svg";
 import { MdClose } from "react-icons/md";
 import { navigatPages } from "@constants/NavigatSettings";
 import MobileMenu from "@components/MobileMenu";
 import Button from "@components/Button";
+import logo from "/public/favicon.ico";
+import Image from "next/image";
 
 const NavBar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -91,8 +90,7 @@ const NavBar = () => {
             onClick={handleMenuClose}
             className="flex items-center gap-2 transition-all duration-300 transform hover:scale-105"
           >
-            {/* <StarLogo />
-            <PositivusLogo /> */}
+            <Image src={logo} alt="logo" width={30} height={30} />
             <span className="text-lg font-bold">Петро Гупало</span>
           </Link>
           <button

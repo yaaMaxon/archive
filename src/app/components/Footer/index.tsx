@@ -6,6 +6,8 @@ import Button from "../Button";
 import Link from "next/link";
 import { navigatPages } from "@constants/NavigatSettings";
 import { myContacts, mySocialNetworks } from "@/app/constants/ContactsSettings";
+import logo from "/public/favicon.ico";
+import Image from "next/image";
 
 const Footer = () => {
   const pathname = usePathname();
@@ -38,7 +40,10 @@ const Footer = () => {
       <div className="flex flex-col lg:flex-row gap-6 lg:gap-16 pt-14 pb-8 px-6 lg:pt-[96px] lg:px-16 xl:px-[120px] bg-[#0D1E21]">
         <div className="flex flex-col gap-6 justify-between">
           <div className="flex flex-col gap-3">
-            <span className="text-lg font-bold text-white">Петро Гупало</span>
+            <div className="flex flex-row items-center gap-2">
+              <Image src={logo} alt="logo" width={30} height={30} />
+              <span className="text-lg font-bold text-white">Петро Гупало</span>
+            </div>
             <p className="text-[#9A9FA0]">
               Архівуйте сьогодні — збережіть цінне для завтрашнього дня!
             </p>
